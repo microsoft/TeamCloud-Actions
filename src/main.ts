@@ -50,7 +50,7 @@ async function run(): Promise<void> {
         core.setOutput('sender_id', command.user.id)
         core.setOutput('sender_userType', command.user.userType)
         core.setOutput('sender_role', command.user.role)
-        core.setOutput('sender_projectMembershipts', command.user.projectMembershipts)
+        core.setOutput('sender_projectMemberships', command.user.projectMemberships)
         core.setOutput('sender_properties', command.user.properties)
 
         core.exportVariable('TC_COMMAND', command)
@@ -61,7 +61,7 @@ async function run(): Promise<void> {
         core.exportVariable('TC_SENDER_ID', command.user.id)
         core.exportVariable('TC_SENDER_USERTYPE', command.user.userType)
         core.exportVariable('TC_SENDER_ROLE', command.user.role)
-        core.exportVariable('TC_SENDER_PROJECTMEMBERSHIPTS', command.user.projectMembershipts)
+        core.exportVariable('TC_SENDER_PROJECTMEMBERSHIPS', command.user.projectMemberships)
         core.exportVariable('TC_SENDER_PROPERTIES', command.user.properties)
 
         const projectEvents = ['tc_project_create', 'tc_project_update', 'tc_project_delete']
@@ -114,14 +114,14 @@ async function run(): Promise<void> {
           core.setOutput('user_id', command.payload.id)
           core.setOutput('user_userType', command.payload.userType)
           core.setOutput('user_role', command.payload.role)
-          core.setOutput('user_projectMembershipts', command.payload.projectMembershipts)
+          core.setOutput('user_projectMemberships', command.payload.projectMemberships)
           core.setOutput('user_properties', command.payload.properties)
 
           core.exportVariable('TC_USER', command.payload)
           core.exportVariable('TC_USER_ID', command.payload.id)
           core.exportVariable('TC_USER_USERTYPE', command.payload.userType)
           core.exportVariable('TC_USER_ROLE', command.payload.role)
-          core.exportVariable('TC_USER_PROJECTMEMBERSHIPTS', command.payload.projectMembershipts)
+          core.exportVariable('TC_USER_PROJECTMEMBERSHIPS', command.payload.projectMemberships)
           core.exportVariable('TC_USER_PROPERTIES', command.payload.properties)
         }
       }
