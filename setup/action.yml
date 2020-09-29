@@ -1,0 +1,9 @@
+name: 'TeamCloud'
+description: 'Configure the workflow to handle TeamCloud commands'
+author: 'Microsoft'
+outputs:
+  command:
+    description: 'The TeamCloud command'
+runs:
+  using: 'node12'
+  main: '../dist/index.js'
