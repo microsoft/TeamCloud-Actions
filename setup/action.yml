@@ -1,9 +1,71 @@
-name: 'TeamCloud'
+name: 'TeamCloud Setup'
 description: 'Configure the workflow to handle TeamCloud commands'
 author: 'Microsoft'
 outputs:
   command:
-    description: 'The TeamCloud command'
+    description: 'The full command json.'
+  commandId:
+    description: 'The command id (guid)'
+  projectId:
+    description: 'For project commands, the command project id (guid)'
+  providerId:
+    description: 'The command provider id'
+  sender:
+    description: 'The full command user json'
+  sender_id:
+    description: 'The command sender (user) id (guid)'
+  sender_userType:
+    description: 'The command sender (user) type: [User, System, Provider, Application]'
+  sender_role:
+    description: 'The command sender (user) system role: [None, Provider, Creator, Admin]'
+  sender_projectMemberships:
+    description: 'The command sender (user) project memberships array json'
+  sender_properties:
+    description: 'The command sender (user) properties'
+  project:
+    description: 'For project commands, the full payload (project) json'
+  project_id:
+    description: 'For project commands, the payload (project) id (guid)'
+  project_name:
+    description: 'For project commands, the payload (project) name'
+  project_type_id:
+    description: 'For project commands, the payload (project) type id'
+  project_type_isDefault:
+    description: 'For project commands, whether the payload (project) type is the default'
+  project_type_region:
+    description: 'For project commands, the payload (project) type region'
+  project_type_subscriptions:
+    description: 'For project commands, the payload (project) type subscriptions (array of guid)'
+  project_type_subscriptionCapacity:
+    description: 'For project commands, the payload (project) type subscription capacity'
+  project_type_resourceGroupNamePrefix:
+    description: 'For project commands, the payload (project) type resource group name prefix'
+  project_type_providers:
+    description: 'For project commands, the payload (project) type providers'
+  project_resourceGroup_id:
+    description: 'For project commands, the payload (project) resource group id'
+  project_resourceGroup_name:
+    description: 'For project commands, the payload (project) resource group name'
+  project_resourceGroup_subscriptionId:
+    description: 'For project commands, the payload (project) resource group subscription id'
+  project_resourceGroup_region:
+    description: 'For project commands, the payload (project) resource group region'
+  project_users:
+    description: 'For project commands, the payload (project) users'
+  project_links:
+    description: 'For project commands, the payload (project) links'
+  user:
+    description: 'For user commands, the payload (user) json'
+  user_id:
+    description: 'For user commands, the payload (user) id'
+  user_userType:
+    description: 'For user commands, the payload (user) type: [User, System, Provider, Application]'
+  user_role:
+    description: 'For user commands, the payload (user) role: [None, Provider, Member, Owner]'
+  user_projectMemberships:
+    description: 'For user commands, the payload (user) project memberships array json'
+  user_properties:
+    description: 'For user commands, the payload (user) properties'
 runs:
   using: 'node12'
   main: '../dist/index.js'
