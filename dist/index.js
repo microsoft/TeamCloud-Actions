@@ -53,7 +53,7 @@ function run() {
                 const buffer = yield fs_1.promises.readFile(eventPath);
                 const event = JSON.parse(buffer.toString());
                 const command = event.client_payload;
-                const eventType = event.event_type;
+                const eventType = event.action;
                 if (!command) {
                     core.setFailed('Unable get command from event payload.');
                 }
