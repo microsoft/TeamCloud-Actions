@@ -39,9 +39,10 @@ async function run(): Promise<void> {
             `An error was encountered when uploading ${uploadResponse.artifactName}. There were ${uploadResponse.failedItems.length} items that failed to upload.`
           )
         } else {
-          core.info(`Artifact ${uploadResponse.artifactName} has been successfully uploaded!`)
+          core.info(`Artifact ${uploadResponse.artifactName} has been successfully uploaded.`)
         }
 
+        core.info('Setting outputs for command.')
         core.setOutput('command', command)
         core.setOutput('commandId', command.commandId)
         core.setOutput('projectId', command.projectId)
@@ -53,6 +54,7 @@ async function run(): Promise<void> {
         core.setOutput('sender_projectMemberships', command.user.projectMemberships)
         core.setOutput('sender_properties', command.user.properties)
 
+        core.info('Exporting env variables for command.')
         core.exportVariable('TC_COMMAND', command)
         core.exportVariable('TC_COMMANDID', command.commandId)
         core.exportVariable('TC_PROJECTID', command.projectId)
@@ -74,7 +76,10 @@ async function run(): Promise<void> {
           'tc_teamcloud_user_update'
         ]
 
+        core.info(`Determining payload type for eventType: ${eventType}.`)
+
         if (projectEvents.includes(eventType)) {
+          core.info('Setting outputs for payload type Project.')
           core.setOutput('project', command.payload)
           core.setOutput('project_id', command.payload.id)
           core.setOutput('project_name', command.payload.name)
@@ -92,6 +97,7 @@ async function run(): Promise<void> {
           core.setOutput('project_users', command.payload.users)
           core.setOutput('project_links', command.payload._links)
 
+          core.info('Exporting env variables for payload type Project.')
           core.exportVariable('TC_PROJECT', command.payload)
           core.exportVariable('TC_PROJECT_ID', command.payload.id)
           core.exportVariable('TC_PROJECT_NAME', command.payload.name)
@@ -110,6 +116,7 @@ async function run(): Promise<void> {
           core.exportVariable('TC_PROJECT_LINKS', command.payload._links)
         }
         if (userEvents.includes(eventType)) {
+          core.info('Setting outputs for payload type User.')
           core.setOutput('user', command.payload)
           core.setOutput('user_id', command.payload.id)
           core.setOutput('user_userType', command.payload.userType)
@@ -117,6 +124,7 @@ async function run(): Promise<void> {
           core.setOutput('user_projectMemberships', command.payload.projectMemberships)
           core.setOutput('user_properties', command.payload.properties)
 
+          core.info('Exporting env variables for payload type User.')
           core.exportVariable('TC_USER', command.payload)
           core.exportVariable('TC_USER_ID', command.payload.id)
           core.exportVariable('TC_USER_USERTYPE', command.payload.userType)
